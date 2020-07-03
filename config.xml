@@ -8,7 +8,9 @@
   <license href=""/>  
   <content encoding="utf-8" src="login.html"/>  
   <updateurl/>  
-  <logserverip>127.0.0.1</logserverip>  
+  <logserverip>127.0.0.1</logserverip> 
+  <username>appadmin</username>  
+  <pass>6TGFS%8eKIJs#JS72HS2<pass>
   <showmyspace>false</showmyspace>  
   <obfuscation>false</obfuscation>  
   <bgcolor/>  

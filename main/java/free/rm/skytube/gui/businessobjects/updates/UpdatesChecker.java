@@ -1,0 +1,142 @@
+/*
+ * SkyTube
+ * Copyright (C) 2018  Ramon Mifsud
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation (version 3 of the License).
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package free.rm.skytube.gui.businessobjects.updates;
+
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import free.rm.skytube.BuildConfig;
+import free.rm.skytube.app.Utils;
+
+/**
+ * Checks for app updates.
+ */
+public class UpdatesChecker {
+
+	private URL		latestApkUrl;
+	private String	latestApkVersion;
+	private String	releaseNotes;
+	private final boolean	fetchReleaseNotes;
+	private final String	currentVersionNumber;
+	private boolean updatesAvailable;
+
+	private static String TAG = UpdatesChecker.class.getSimpleName();
+
+
+	UpdatesChecker(boolean fetchReleaseNotes, String	currentVersionNumber) {
+		this.fetchReleaseNotes = fetchReleaseNotes;
+		this.currentVersionNumber = currentVersionNumber;
+	}
+
+	/**
+	 * Check for app updates.  If an update is available, {@link this#latestApkUrl} and {@link this#latestApkVersion}
+	 * will be set.
+	 *
+	 * @return True if if an update is available;  false otherwise.
+	 */
+	public boolean checkForUpdates() {
+		updatesAvailable = false;
+		boolean oss = BuildConfig.FLAVOR.equalsIgnoreCase("oss");
+
+		if (oss && !fetchReleaseNotes) {
+			// OSS version update checker is the responsibility of FDROID
+			Log.d(TAG, "OSS version - will not be checking for updates.");
+		} else {
+
+			try {
+				WebStream webStream = new WebStream(BuildConfig.SKYTUBE_UPDATES_URL);
+				String updatesJSONStr = webStream.downloadRemoteTextFile();
+				webStream.close();
+
+				JSONObject json = new JSONObject(updatesJSONStr);
+				latestApkVersion = getLatestVersionNumber(json);
+				releaseNotes = getReleaseNotes(json);
+
+				Log.d(TAG, "CURRENT_VER: " + currentVersionNumber);
+				Log.d(TAG, "REMOTE_VER: " + latestApkVersion);
+
+				if (!oss) {
+					if (!Utils.equals(currentVersionNumber, latestApkVersion)) {
+						this.latestApkUrl = getLatestApkUrl(json);
+						updatesAvailable = true;
+						Log.d(TAG, "Update available.  APK_URL: " + latestApkUrl);
+					} else {
+						Log.d(TAG, "Not updating.");
+					}
+				}
+			} catch (Throwable e) {
+				Log.e(TAG, "An error has occurred while checking for updates", e);
+			}
+		}
+		return updatesAvailable;
+	}
+
+
+	public URL getLatestApkUrl() {
+		return latestApkUrl;
+	}
+
+	public String getLatestApkVersion() {
+		return latestApkVersion;
+	}
+
+	public String getReleaseNotes() {
+		return releaseNotes;
+	}
+
+	public boolean isUpdateAvailable() {
+		return updatesAvailable;
+	}
+
+	/**
+	 * Extracts from json the latest APP's version.
+	 *
+	 * @param json
+	 * @return
+	 * @throws JSONException
+	 */
+	private String getLatestVersionNumber(JSONObject json) throws JSONException {
+		String  versionNumberStr = json.getString("tag_name").substring(1);  // tag_name = "v2.0" --> so we are going to delete the 'v' character
+		return versionNumberStr;
+	}
+
+
+	private String getReleaseNotes(JSONObject json) throws JSONException {
+		return json.getString("body");
+	}
+
+	/**
+	 * Extracts from json the APK's URL of the latest version.
+	 *
+	 * @param json
+	 * @return
+	 * @throws JSONException
+	 */
+	private URL getLatestApkUrl(JSONObject json) throws JSONException, MalformedURLException {
+		String apkUrl = json.getJSONArray("assets").getJSONObject(0).getString("browser_download_url");
+		return new URL(apkUrl);
+	}
+
+
+
+}
