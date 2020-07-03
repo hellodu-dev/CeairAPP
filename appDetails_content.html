@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+<title>
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="css/ui-base.css">
+<link rel="stylesheet" href="css/ui-box.css">
+<link rel="stylesheet" href="css/ui-color.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/ui-anim.css">
+<script src="js/zy_control.js"></script>
+	<script src="js/zy_click.js"></script>
+	<script src="js/zy_json.js"></script>
+	<script src="js/zy_anim.js"></script>
+	<script src="js/zy_event.js"></script>
+	<script src="js/zy_icache.js"></script>
+	<script src="js/myProcCanvas.js"></script>
+	<script src="js/zy_slide.js"></script>
+	<script></script>
+<style>
+	.arr-s{
+		width:1.3em;
+		height:1.3em;
+	}
+	.arr-img{
+		background-image:url('images/down.png');
+	}
+	input[type="radio"]:checked + div.dt-ch{
+		color:white;
+		background-color:#1E8AFF;
+	}
+	input[type="radio"]:checked + div.tab-ch{
+		-webkit-transform:rotate(180deg);
+	}
+	.divf{
+		float:left;
+	}
+	.divClear{
+		clear:both;
+	}
+	.umar-rt{
+		margin: 0 .4em .75em 0;
+	}
+	.c-blu00{
+		background-color:#E6EDF8;
+	}
+	.tabs-a{
+		background-image:url('images/tab-a.png');
+	}
+	.tabs-n{
+		background-image:url('images/tab-n.png');
+	}
+	.marg-t1{
+		margin-top: -1em;
+	}
+	.marg-t05{
+		margin-top: -0.5em;
+	}
+	
+
+	.uc-l{
+        -webkit-border-top-left-radius: .5em;
+        border-top-left-radius: .5em;
+        -webkit-border-bottom-left-radius: .5em;
+        border-bottom-left-radius: .5em;
+	}
+	.uc-r{
+        -webkit-border-top-right-radius: .5em;
+        border-top-right-radius: .5em;
+        -webkit-border-bottom-right-radius: .5em;
+        border-bottom-right-radius: .5em;
+	}
+	.toast{
+		top:2em;
+		width: 7em;
+		height:4.5em;
+		z-index:100;
+		background-color:rgba(0,0,0,0.7);
+	}
+	
+	.img-ren{
+		width: 4.5em;
+		height: 7em;
+		background-image:url('images/ren.png');
+	}
+	.utra-ren{
+		-webkit-transition:all 200ms ease-in 2000ms;
+	}
+	.s-note{
+		width: 7em;
+		height: 3em;
+	}
+	.img-note{
+		background-image:url('images/note.png');
+		background-position: top;
+	}
+	
+	input[type="radio"]:checked + div.tab-page{
+		display:block;
+	}
+	input[type="radio"] + div.tab-page{
+		display:none;
+	}
+	p{
+		line-height:1.5em
+	}
+	.star-s{
+		width: 1.75em;
+		height:1.25em;
+	}
+	.star-a{
+		
+	}
+	.btn-nn{
+		padding:1em 2em;
+	}
+	.btn-c{
+		background-color:#1E8AFF;
+	}
+	.linebreak{
+		word-wrap: break-word;
+		word-break:break-all;
+	}
+	
+	.imgsld{
+		width: 9.25em;
+		height:16em;
+	}
+</style>
+</head>
+<body class="um-vp c-wh" ontouchstart>
+	<div class="uabs ub-fh ub">
+		<div class="ub-f1" style="left:5em"></div>
+		<div class="toast c-blu t-wh ub ub-ac ub-pc uc-a1 utra a-op" id="toast">
+			<p class="ulev-1">磁帖已添加</p>
+		</div>
+		<div class="ub-f1" style="right:5em"></div>
+	</div>
+    <div id="page_0" class="up ub ub-ver" tabindex="0">
+        <!--header开始-->
+		<div id="header">
+			<!---应用信息--->
+			<div class="uinn00" id="detail">
+				<div class="ub ub-ac ub-pc" ontouchstart="zy_touch()" onclick="openDetail('appid');">
+					<div class="ub-img imgsize umr00 uc-a" style="background-image:url('images/logo30.png');" id="appIcon"></div>
+					<div class="ub-f1 heigth4 ub ub-ver">
+						<div class="ub-f1 ub">
+							<div class="ub-f1">
+								<div class="" id="appName">&nbsp;</div>
+								<div class="ub uinn10" id="appStar">
+									<div class="ub-img5 starsz starsrc"></div>
+									<div class="ub-img5 starsz starsrc"></div>
+									<div class="ub-img5 starsz starsrc"></div>
+									<div class="ub-img5 starsz starsrc"></div>
+									<div class="ub-img5 starsz starsrc"></div>
+								</div>
+							</div>
+							<div class="umw4 ub ub-ac ub-pe" ontouchstart="zy_touch()" onclick="appOperate('ssss');" id="proc00000000">
+								<div class="uc-a1 uba umw3 tx-c uinn03 txtc" id="downloaded">下载</div>
+								<div class="c-wh" id="cv00000000"></div>
+							</div>
+						</div>
+						<div class="ut-s t-gra ulev-1 ub ub-ac">
+							<div class="ub umr00">
+								<div class="ub-img5 arr-s umr00" style="background-image:url(images/phone.png)"></div>
+								<div class="ub-img5 arr-s umr00" style="background-image:url(images/pad.png)"></div>
+							</div>
+							<div class="ub-f12" id="appVersion">&nbsp;</div>
+							<div class="ub-f1"></div>
+						</div>
+					</div>
+				</div>
+				<div class="ubb b-gra2 uinn10"></div>
+			</div>
+			
+			<!---添加磁帖--->
+			<div class="uinn1" id="tabInfo">
+				<div class="ub ub-pc">
+					<div class="ub-img4 arr-s tabs-n umr00" id="iconAdd" ontouchstart="zy_touch()" onclick="selectAll();"></div>
+					<div class="ub-f1 txtc umar-b" ontouchstart="zy_touch()" onclick="changArr();">添加磁帖</div>
+					<div class="ub ub-pe umw4 umh3" ontouchstart="zy_touch()" onclick="changArr();">
+						<input class="uhide" type="radio" name="tabs" id="tabs" checked="true">
+						<div class="ub-img4 arr-s arr-img tab-ch utra"></div>
+					</div>
+				</div>
+				<div class="umar-b t-gra ulev-1" id="tabDesc">&nbsp;</div>
+				<div id="tabList" class="" style="height:0">
+					<!--div class="divf umar-rt" ontouchstart="zy_touch()" onclick="tabAdd(11)">
+						<p class="uc-a1 c-wh uinn ulev-1 us utra" id="11" name="tab">我的日程</p>
+					</div>
+					<div class="divf umar-rt" ontouchstart="zy_touch()" onclick="tabAdd(22)">
+						<p class="uc-a1 c-wh uinn ulev-1 us utra" id="22" name="tab">必读通知</p>
+					</div-->
+				</div>
+				<div class="divClear"></div>
+				<div class="ubb ubbc"></div>
+			</div>
+			
+			<!---tab菜单--->
+			<div class="uinn00" id="tabMenu">
+				<div class="ub uba ubbc uc-a">
+					<input class="uhide" type="radio" name="tabMenu" id="d-0" checked="true">
+					<div class="ub-f1 tx-c uinn txtc dt-ch uc-l" ontouchstart="zy_touch()" onclick="changTab('0');">应用详情</div>
+					<div class="ubr ubbc"></div>
+					<input class="uhide" type="radio" name="tabMenu" id="d-1">
+					<div class="ub-f1 tx-c uinn txtc dt-ch uc-r" ontouchstart="zy_touch()" onclick="changTab('1');">用户评论</div>
+				</div>
+			</div>
+		</div>
+        <!--header结束-->
+		
+        <!---应用详情--->
+		<input class="uhide" type="radio" name="detail" id="p-0" checked="true">
+		<div class="tab-page" id="page0">
+			<div class="uinn">
+				<div id="slider" class="ub umar-b" style="overflow-x:scroll;">
+					<div class="ub" style="width:40%" id="sld">
+						<div class="ub-fh ub" id="imglist">
+							<!--div class="c-gra">
+								<div class="ub-img ub-img4 imgsld" style="background-image:url(images/guild-1.png);" id="img-1"></div>
+							</div>
+							<div class="umar-l c-blu">
+								<div class="ub-img ub-img4 imgsld" style="background-image:url(images/guild-2.png);" id="img-1">1</div>
+							</div>
+							<div class="umar-l c-org">
+								<img class="ub-img ub-img4 imgsld" style="background-image:url(images/guild-3.png);" width="100%" id="img-3">
+							</div-->
+						</div>
+					</div>
+				</div>
+				<div class="ubt b-gra2 uinn11" id="updateHints">
+					<p>更新日志</p>
+					<!--li>
+						<p class="t-gra ulev-1">2015年5月20日</p>
+						<p class="t-gra ulev-1">更新日志1</p>
+					</li-->
+				</div>
+				<div class="ubt b-gra2 uinn11" id="desc">
+					<p>版本特性</p>
+					<!--li>
+						<p class="t-gra ulev-1">更新日志1</p>
+						<p class="t-gra ulev-1">更新日志1</p>
+					</li-->
+				</div>
+			</div>
+		</div>
+		
+		<!---用户评论--->
+		<input class="uhide" type="radio" name="detail" id="p-1">
+		<div class="tab-page" id="page1">
+			<div class="uinn">
+				<div id="score" class="ub ub-pc">
+					<div>评分</div>
+					<div id="star" class="ub-f1 ub ub-ac ub-pc">
+						<div id="s0" class="ub-img5 star-s starsrc" ontouchstart="setStar(1);" onclick="setStar(1);"></div>
+						<div id="s1" class="ub-img5 star-s starsrc" ontouchstart="setStar(2);" onclick="setStar(2);"></div>
+						<div id="s2" class="ub-img5 star-s starsrc" ontouchstart="setStar(3);" onclick="setStar(3);"></div>
+						<div id="s3" class="ub-img5 star-s starsrc" ontouchstart="setStar(4);" onclick="setStar(4);"></div>
+						<div id="s4" class="ub-img5 star-s starsrc" ontouchstart="setStar(5);" onclick="setStar(5);"></div>
+					</div>
+					<div class="umw2"></div>
+				</div>
+				
+				<div id="score" class="ub ub-pc" style="margin-top: 1em;">
+					<div style="margin-right: 1em;">评论</div>
+					<div class="uc-a1 uinput uinn4 ub-f1">    
+						<textarea id="txt" onfocus="" onblur="" placeholder="请输入内容" maxlength="100" name="textarea-0"  class="uc-a1 ub-fh uc-a1 ulev-1" style="height:4em;border:none"></textarea>
+					</div>
+				</div>
+				<div class="ubt b-gra2"></div>
+				
+				<div class="btn-nn">
+					<div class="uinn uc-a tx-c t-wh btn-c" ontouchstart="zy_touch()" onclick="submitEvalute()">发表评论</div>
+				</div>
+				
+				<div class="">
+					<p>用户评论<span id="tts"></span></p>
+					<ul id="plist" class="">
+						<!--li class="ubt b-gra">
+							<div class="ub uinn3">
+								<div class="ub-f1 ub">
+									<div class="ub-img5 starsz starsrc"></div>
+									<div class="ub-img5 starsz starsrc"></div>
+									<div class="ub-img5 starsz starsrc"></div>
+									<div class="ub-img5 starsz starsrck"></div>
+									<div class="ub-img5 starsz starsrck"></div>
+								</div>
+								<div class="t-gra ulev-1">2015-05-20</div>
+							</div>
+							<p class="ulev-1 uinn3">有了掌上东航怎么怎么滴，掌上东航</p>
+						</li-->
+					</ul>
+				</div>
+			</div>
+		</div>
+    </div>
+		
+	<div id="page_1" class="up ub" ontouchstart="zy_touch()" onclick="nodeRemove('page_1');">
+		<div class="ub-f1">
+			<div class="s-note"></div>
+		</div>
+		<div class="ub ub-ver ub-ac">
+			<div class="umh6"></div>
+			<div class="ub-img4 img-ren utra-ren" id="ren"></div>
+		</div>
+		<div class="ub-f1">
+			<div class="umh6"></div>
+			<div class="ub-img4 s-note img-note utra-ren" id="note"></div>
+		</div>
+	</div>
+</body>
+<script>
+zy_init();
+window.uexOnload=function(type){
+	logs('[appDetails_cc] window.uexOnload() ------------------------------->');
+	if(!type){
+		uexWindow.setBounce("1");
+		initAddedTabsObj();
+		loadLocalData();
+	
+		zy_initcache(function(){
+			showAppScreenshot();  //显示应用截图;
+			showDetail();  //显示应用基本信息
+		});
+		
+		getAppDetails();
+		
+		setstorage('MU3-subAppDetail', '');
+	}
+	
+	uexWindow.onSlipedUpEdge = function(){
+		logs('onSlipedUpEdge ~ ~ ~~ ~ ~ ~  ~~ ~ ~ ~ ~');
+	};
+	uexWindow.onSlipedDownEdge = onSlipedDownEdge;
+	
+	try {
+		//2S后移动小人图片;
+		zy_anim_listen('ren',function(){
+			nodeRemove('page_1');
+			setstorage('MU-xiaoren', '1');
+		});
+		zy_anim_push('ren', 'a-s0');
+		zy_anim_push('note', 'a-op');
+	} catch (e) {
+		logs('[appDetails_cc] window.uexOnload() --->'+e);
+	}
+	
+	uexWindow.onNotificationDl = onNotificationDl;
+	uexWindow.subscribeChannelNotification(CID_download, 'onNotificationDl');
+	
+	uexWindow.onUpdateAddedCardsIDS = onUpdateAddedCardsIDS;
+	uexWindow.subscribeChannelNotification(CID_updateAddedCardsIDS, 'onUpdateAddedCardsIDS');
+	
+	uexWindow.onUnInstallApp = onUnInstallApp;
+	uexWindow.subscribeChannelNotification(CID_unInstallApp, 'onUnInstallApp');
+}
+
+function btnOnfocus(t){
+	//alert('btnOnfocus');
+	zy_anim_push('detail', 'uhide');
+	zy_anim_push('tabInfo', 'uhide');
+	//zy_anim_push('tabMenu', 'uhide');
+	zy_resize("content",0,$$("header").offsetHeight);
+	ueppscript('appDetails', 'content', 'document.body.scrollTop = 0;');
+}
+function btnLost(t){
+	//alert('btnLost');
+	zy_anim_pop('detail', 'uhide');
+	zy_anim_pop('tabInfo', 'uhide');
+	//zy_anim_pop('tabMenu', 'uhide');
+	zy_resize("content",0,$$("header").offsetHeight);
+}
+
+function loadLocalData(){
+	var appid = getstorage('MU3-subAppid');
+	logs('[appDetails_cc] loadLocalData()---->'+appid);
+	gUSRNAME = gUSRNAME?gUSRNAME.replace(/[-|.|#|$|&]/g,''):'0';
+	dbTableName = 'mainTable_'+gUSRNAME;
+	if(xingfudonghang) dbTableName='happyMUTable';
+	dbname = "dbMUMobile";
+	openDB(function(id){
+		dbOpId = id;
+		var sql = 'select DISTINCT * from '+dbTableName+' where wgtAppId="' + appid + '" order by id DESC;';
+		logs('[appDetails_cc]exeSqlCb init---->'+sql);
+		//查询待添加列表；
+		selSql(id,sql,function(data){
+			var arr = JSON.parse(data);
+			logs('[appDetails_cc] exeSqlCb 2222---->'+arr.length);
+			appTabArr = arr;
+			showTabList(arr);
+			//if(arr.length>0) zy_con("content", "appDetails_content.html", 0, $$("header").offsetHeight);
+		});
+	});
+}
+
+function changArr(val1, val2){
+	$$('tabs').checked = val1?val2:!$$('tabs').checked;
+	
+	if($$('tabs').checked){
+		zy_anim_pop('tabList', 'uhide');
+		zy_anim_pop('tabDesc', 'uhide');
+	}
+	else{
+		zy_anim_push('tabList', 'uhide');
+		zy_anim_push('tabDesc', 'uhide');
+	}
+	//zy_resize("content",0,$$("header").offsetHeight);
+}
+
+function changTab(id){
+	$$('d-'+id).checked = true;
+	$$('p-'+id).checked = true;
+	
+	if(id==1 && !appEvalute) getAppEvalute();
+	if(id==0 && onEdit) btnLost();
+}
+
+function initNumber(s){
+	var t = s;
+	try{
+		var a = s.split('.');
+		t = parseInt(a[0],10)+'.'+parseInt(a[1],10)+'.'+parseInt(a[2],10);
+	}
+	catch(e){}
+	return t;
+}
+
+
+function getAppDetailsCb(str){
+	logs('[appDetails_cc] getAppDetailsCb--> ' + str);
+	uexWindow.closeToast();
+	updateTabList(str);
+	
+	//tab1 显示应用详情信息
+	getAppDetailsCb2(str);
+}
+
+
+</script>
+</html>

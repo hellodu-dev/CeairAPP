@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+<title>
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-input.css">
+<link rel="stylesheet" href="css/ui-base.css">
+<link rel="stylesheet" href="css/ui-box.css">
+<link rel="stylesheet" href="css/ui-color.css">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="css/ui-anim.css">
+<script src="js/zy_control.js"></script>
+<script src="js/zy_click.js"></script>
+<script src="js/zy_anim.js"></script>
+<script src="js/zy_icache.js"></script>
+<script src="js/zy_json.js"></script>
+<script></script>
+<style>
+	.starsz{
+		width:2em;
+		height:1.8em;
+	}
+	.btn-nn{
+		padding:1em 2em;
+	}
+	.btn-c{
+		background-color:#1E8AFF;
+	}
+</style>
+</head>
+<body class="um-vp c-wh" ontouchstart>
+	<div class="up tab-ch" id="page0">
+		<div class="uinn">
+			<div class="ub ub-ae uinn11">
+				<p>评星级：</p>
+				<div class="ub-f1 ub">
+					<div id="s0" class="ub-img5 starsz starsrc" ontouchstart="setStar(1);" onclick="setStar(1);"></div>
+					<div id="s1" class="ub-img5 starsz starsrc" ontouchstart="setStar(2);" onclick="setStar(2);"></div>
+					<div id="s2" class="ub-img5 starsz starsrc" ontouchstart="setStar(3);" onclick="setStar(3);"></div>
+					<div id="s3" class="ub-img5 starsz starsrc" ontouchstart="setStar(4);" onclick="setStar(4);"></div>
+					<div id="s4" class="ub-img5 starsz starsrc" ontouchstart="setStar(5);" onclick="setStar(5);"></div>
+				</div>
+			</div>
+			
+			<div class="uba uc-a1 b-gra us-i uinput uinn4" style="margin-top:1em;">    
+				<textarea id="txt" placeholder="请输入内容"  name="textarea-0"  class="uc-a1" style="height:12em;"></textarea>
+			</div>
+			
+			<!--div class="btn-nn">
+				<div class="uinn uc-a tx-c t-wh btn-c" ontouchstart="zy_touch()" onclick="submitEvalute()">提交</div>
+			</div-->
+		</div>
+	</div>
+</body>
+<script>
+zy_init();
+window.uexOnload=function(type){
+	if(!type){
+		uexWindow.setBounce("1");
+	}
+	setStar(startLevel);
+}
+
+var startLevel = 3; //星级
+function setStar(j){
+	for(var i=0; i<j; i++){
+		var id='s'+i;
+		$$(id).className = 'ub-img5 starsz starsrc';
+	}
+	for(var i=5; i>j; i--){
+		var id='s'+(i-1);
+		$$(id).className = 'ub-img5 starsz starsrck';
+	}
+	startLevel = j;
+}
+
+var onSubmit = 0;
+/*提交评论*/
+function submitEvalute(){
+	var appId = getstorage('MU3-subAppid');
+	var url = localStorage['MU30-masUrl'] + 'submitAppEvalute';
+	var evaluteInfo = $$('txt').value.trim();
+	if(!evaluteInfo){
+		alert('请输入评论内容！');
+		return;
+	}
+	if(onSubmit){
+		alert('信息提交中，请稍候！');
+		return;
+	}
+	var username = getstorage('MU30-US');
+	var f = [
+			{'key':'username','type':'0','value':username},
+			{'key':'appId','type':'0','value':appId},
+			{'key':'startLevel','type':'0','value':startLevel},
+			{'key':'evaluteInfo','type':'0','value':evaluteInfo},
+		]
+	logs('submitEvalute()-->'+url);
+	uexWindow.toast('1','5','请稍候...','');
+	onSubmit = 1;
+	$.getJSON(url,submitEvaluteCb,'text',function(e){
+		uexWindow.toast('0','5','网络异常，请检查网络','1500');
+		onSubmit = 0;
+	},'POST',f,'');
+}
+function submitEvaluteCb(str){
+	logs('submitEvaluteCb() -->'+str);
+	var info = '提交失败！';
+	onSubmit = 0;
+	if(str){
+		var obj = str2Json(str);
+		if(obj.status=='ok'){
+			info='提交成功！';
+			uescript('appEvalute', 'exitWin();');
+			ueppscript('appDetails', 'content', 'updateData();');
+			onSubmit = 1;
+		}
+		else info=obj.info;
+	}
+	uexWindow.toast('0','5',info,'1500');
+}
+</script>
+</html>

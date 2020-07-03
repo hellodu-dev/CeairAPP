@@ -1,0 +1,204 @@
+.c-bluhead{
+	background-color:#738fbf !important;/*383b59, 738fbf*/
+}
+.c-footer{
+	background-color:#f7f7f7;
+}
+.t-footer{
+	color:#919191;
+}
+.t-footera{
+	color:#e24444;
+}
+.b-footer{
+	border-color:#CCC;
+}
+.h-footer{
+	min-height:2.75em;
+}
+.pd-header{
+	padding: .825em .5em !important;
+}
+.c-pageBg{
+	background-color: #f1f4f9;
+}
+.btn-act2{
+	/*color:#FFF !important;*/
+	background-color:#E6E6E6;
+}
+
+.logo{
+	width: 1.75em;
+	height: 1.75em;
+	background-image:url('../images/add.png');
+}
+
+.back{
+	width: 1.75em;
+	height: 1.5em;
+	background-image:url('../images/back.png');
+}
+.res-wh{
+	width: 3em;
+	height: .6em;
+}
+
+.res-down{
+	background-image:url('../images/down.png');
+}
+.res-up{
+	background-image:url('../images/up.png');
+}
+
+
+.img1{
+	background-image:url('../images/porf1.png');
+}
+.tab-act .img1{
+	background-image:url('../images/porf1a.png') !important;
+}
+.img2{
+	background-image:url('../images/porf2.png');
+}
+.tab-act .img2{
+	background-image:url('../images/porf2a.png') !important;
+}
+.img3{
+	background-image:url('../images/porf3.png');
+}
+.tab-act .img3{
+	background-image:url('../images/porf3a.png') !important;
+}
+.img4{
+	background-image:url('../images/porf4.png');
+}
+.tab-act .img4{
+	background-image:url('../images/porf4a.png') !important;
+}
+.img5{
+	background-image:url('../images/porf5.png');
+}
+.tab-act .img5{
+	background-image:url('../images/porf5a.png') !important;
+}
+
+.uinn10
+{
+	padding:0.25em 0;
+	margin:0;
+}
+.uinn11
+{
+	padding:0.5em 0;
+	margin:0;
+}
+.uinn44
+{
+	padding:0.2em 0;
+	margin:0;
+}
+.uinn55
+{
+	padding:1em 0.5em;
+	margin:0;
+}
+.ptop{
+	padding-top:.75em;
+}
+
+
+/***应用商城****/
+.uinn00{
+	padding:0.5em
+}
+.uinn01{
+	padding:0 0 .5em 0;
+}
+.uinn02{
+	padding:0 1em;
+}
+.uinn20{
+	padding:1em 0;
+}
+.uinn03{
+	padding:0.3em 0.2em
+}
+.umr00{
+	margin-right:.5em;
+}
+.umtb00{
+	margin:0.5em 0;
+}
+.umtb01{
+	margin:0 0.5em;
+}
+.ubbc{
+	border-color: #1E8AFF;
+}
+.umw6{
+	min-width:6em;
+}
+.txtc{
+	color: #007AFF;
+}
+.imgsize{
+	width: 4em;
+	height:4em;
+}
+.heigth4{
+	height:4.25em;
+}
+	
+.tlineheight{
+	line-height:1.5em;
+}
+.starsz{
+	width:.8em;
+	height:.7em;
+}
+.starsrc{
+	background-image:url('../images/star0.png');
+}
+.starsrck{
+	background-image:url('../images/star1.png');
+}
+
+.bgc-input{
+	background-color:#818291;
+}
+
+.btn-btc-y{
+	color: #ff9b0c;
+	border-color: #ff9b0c;
+}
+.btn-btc-b{
+	color: #007aff;
+	border-color: #007aff;
+}
+.btn-btc-g{
+	color: #7db506;
+	border-color: #7db506;
+}
+.btn-btc-gra{
+	color: #7d7d7d;
+	border-color: #7d7d7d;
+}
+
+.proc-canvas {
+	position: absolute;
+	top: -0.125em;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/***应用商城****/
+
+/***PAD版本****/
+
+#header .ulev011{
+	font-size: 1.6em !important;
+}
+#header0 .ulev011{
+	font-size: 1.6em !important;
+}
+/***PAD版本****/

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<widget appId="sdk10001" channelCode="0000" height="480" pid="" sreensize="4.5" version="1.1.8" viewmode="application" widgetId="" width="320"> 
+  <name>掌上东航HD</name>  
+  <description/>  
+  <author email=""></author>  
+  <icon src="icon.png"/>  
+  <license href=""/>  
+  <content encoding="utf-8" src="login.html"/>  
+  <updateurl/>  
+  <logserverip>127.0.0.1</logserverip>  
+  <showmyspace>false</showmyspace>  
+  <obfuscation>false</obfuscation>  
+  <bgcolor/>  
+  <orientation>15</orientation>  
+  <debug>false</debug>  
+  <partobfuscation/>  
+  <webapp/> 
+</widget>

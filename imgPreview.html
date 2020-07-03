@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-res.css">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/ui-color.css">
+	<link rel="stylesheet" href="css/ui-anim.css">
+	<link rel="stylesheet" href="css/login.css">
+	<script src="js/zy_control.js"></script>
+	<script src="js/zy_click.js"></script>
+	<script src="js/zy_json.js"></script>
+	<script src="js/zy_anim.js"></script>
+	<style>
+	.round {
+		width: 16em;
+		height: 16em;
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+	}
+	.imgheader{
+		background-image:url('images/header.png');
+	}
+	.umt1{
+		margin-top:1em;
+	}
+	.uinn5252{
+		padding:.5em 2em;
+	}
+	</style>
+</head>
+    <body class="um-vp" ontouchstart>
+        <div id="page_0" class="up ub ub-ver c-gra1 utra" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="uh ub t-wh c-bluhead">
+				<div class="umw4 ub ub-ac ub-pa" ontouchstart="zy_touch()" onclick="cancelUPL();">
+					<div class="ub-img5 back"></div>
+					<p>取消</p>
+				</div>
+				<h1 class="ub-f1 ut ulev0 ut-s tx-c pd-header" id="ttl">预览</h1>
+				<div class="umw4">
+				</div>
+            </div> 
+            <!--header结束--><!--content开始-->
+            <div id="content" class="ub-f1 ub ub-ver ub-ac">
+	            <div class="ub ub-ac ub-pc" id="imgbg">
+	            	<div id="img" class="round ub-img1 imgheader utra"></div>
+	            </div>
+				<div class="ub ub-ver tx-c ub-f1 ub-pc ub-fh">
+					<div class="uinn5252">
+						<div ontouchstart="zy_touch('btn-act')" onclick="reSelect();" class="btn uinn5 c-blu c-m7 uc-a t-wh">重新选择</div>
+					</div>
+					<div class="uinn5252">
+						<div ontouchstart="zy_touch('btn-act')" onclick="uploadFile();" class="btn uinn5 c-blu c-m7 uc-a t-wh">上传图片</div>
+					</div>
+				</div>
+
+            </div>
+        </div>
+    </body>
+<script>
+zy_init();
+window.uexOnload = function(type){
+	if (!type) {
+        //zy_con("content", "imgPreview_content.html", 0, $$("header").offsetHeight);
+    }
+	window.onorientationchange=window.onresize=function(){
+		zy_resize("content",0,$$("header").offsetHeight);				
+	}
+}
+
+function showavator(){
+	var avatorSrc = getstorage('MU3-Avator-Tmp');
+	logs('[imgPreview] showavator()-->'+avatorSrc);
+	$$('img').style.backgroundImage = "url(" + avatorSrc + ")";
+	//zy_anim_pop('page_0','a-op');
+}
+
+function cancelUPL(){
+	uexWindow.closePopover('imgPreview');
+}
+
+function uploadFile(){
+	uescript('individualCenter', 'cbImagePick2();');
+	cancelUPL();
+}
+
+function reSelect(){
+	uescript('individualCenter', 'selectFile();');
+	cancelUPL();
+}
+/****************************************/
+
+var sw = int(getstorage('MU-CW') || 320);
+var sf = int(setstorage('MU-CF') || 16);
+var em = sw/sf;
+$$('imgbg').style.height = sw+'px';
+$$('img').style.width = (sw-2.5*em)+'px';
+$$('img').style.height = (sw-2.5*em)+'px';
+showavator();
+/****************************************/
+</script>
+</html>

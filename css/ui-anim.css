@@ -1,0 +1,32 @@
+.utra
+{
+	-webkit-transition:all 200ms ease-in 1ms
+}
+
+
+.a-op
+{
+	opacity:0
+}
+
+.a-mr
+{
+	-webkit-transform:translateX(100%);
+}
+
+.a-ml
+{
+	-webkit-transform:translateX(-100%);
+}
+
+.a-mt
+{
+	-webkit-transform:translateY(-100%);
+}
+.a-mb
+{
+	-webkit-transform:translateY(100%);
+}
+.a-s0{
+	-webkit-transform:scale(0);
+}

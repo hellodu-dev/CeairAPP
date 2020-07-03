@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1,  minimum-scale=1.0, maximum-scale=3.0">
+    <link rel="stylesheet" href="css/ui-tab.css">
+    <link rel="stylesheet" href="css/ui-img.css">
+    <link rel="stylesheet" href="css/ui-list.css">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/ui-color.css">
+	<link rel="stylesheet" href="css/ui-res.css">
+	<link rel="stylesheet" href="css/login.css">
+	<script src="js/zy_control.js"></script>
+	<script src="js/zy_click.js"></script>
+	<style>
+	.isize{
+		width: 2em;
+		height: 2em;
+	}
+	.fback{
+		background-image:url('images/wback.png');
+	}
+	.fforward{
+		background-image:url('images/wforw.png');
+	}
+	.btn-act0 .fback{
+		background-image:url('images/wback-act.png');
+	}
+	.btn-act0 .fforward{
+		background-image:url('images/wforw-act.png');
+	}
+	</style>
+</head>
+    <body class="um-vp c-gra1" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="uh ub t-wh c-bluhead">
+				<div class="umw4 ub ub-ac ub-pa" ontouchstart="zy_touch()" onclick="closeWind();">
+					<div class="ub-img5 back"></div>
+					<p>返回</p>
+				</div>
+				<h1 class="ub-f1 ut ulev0 ut-s tx-c pd-header" id="ttl">东航动态</h1>
+				<div class="umw4" ontouchstart="zy_touch()"></div>
+            </div> 
+            <!--header结束--><!--content开始-->
+            <div id="content" class="ub-f1">
+	            
+            </div>
+			<div class="ub uinn11 t-footer c-footer ubt b-footer">
+				<div class="umw4 ub ub-pe" ontouchstart="zy_touch('btn-act0')" onclick="back_()">
+					<div class="isize fback ub-img"></div>
+				</div>
+				<div class="ub-f1"></div>
+				<div class="umw4" ontouchstart="zy_touch('btn-act0')" onclick="forward_()">
+					<div class="isize fforward ub-img"></div>
+				</div>
+			</div>
+        </div>
+    </body>
+<script>
+zy_init();
+window.uexOnload = function(type){
+	if (!type) {
+		var url = weburl?weburl:"";
+        zy_con("content", 'webpage_content.html', 0, $$("header").offsetHeight);
+    }
+	window.onorientationchange=window.onresize=function(){
+		zy_resize("content",0,$$("header").offsetHeight);				
+	}
+	
+	if(weburl=='http://party.ceair.com'){
+		tmid = setInterval(function(){
+			logs('weburl ~>'+weburl);
+			var u = localStorage['MU30-lOGIN-USRNAME'];
+			var p = localStorage['MU30-lOGIN-PASSWORD'];
+			var js = 'var e1=document.getElementById("ctl00_PlaceHolderMain_clogin_UserName");if(e1){e1.value="'+u+'";}var e2=document.getElementById("ctl00_PlaceHolderMain_clogin_password");if(e2){e2.value="'+p+'";};';
+			ueppscript('webpage', 'content', js);
+		}, 300);
+		tmid2 = setTimeout('clearIntervalMain()', 5000);
+	}
+}
+
+function closeWind(){
+	if(tmid2) clearTimeout(tmid2);
+	if(tmid) clearInterval(tmid);
+	uexWindow.close(-1);
+}
+var tmid = 0;
+var tmid2 = 0;
+function clearIntervalMain(){
+	logs('clearIntervalMain ~>'+tmid);
+	clearInterval(tmid);
+	tmid=0;tmid2=0;
+}
+
+function zy_con(id,url,x,y){
+	var s=window.getComputedStyle($$(id),null);
+	uexWindow.openPopover(id,"0",url,"",int(x),int(y),int(s.width),int(s.height),int(s.fontSize),"128");
+}
+
+//后退
+function back_(){
+	var js = 'uexWindow.pageBack();';
+	logs('back_()---->js='+js);
+	uexWindow.evaluatePopoverScript('webpage','content',js);
+}
+//前进
+function forward_(){
+	var js = 'uexWindow.pageForward();';
+	logs('forward_()---->js='+js);
+	uexWindow.evaluatePopoverScript('webpage','content',js);
+}
+/****************************************/
+var ttl = getstorage('mu-webttl');
+var weburl = getstorage('mu-weburl');
+if(ttl) $$('ttl').innerHTML = ttl;
+
+/****************************************/
+</script>
+</html>

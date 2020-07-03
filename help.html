@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/ui-color.css">
+	<link rel="stylesheet" href="css/ui-res.css">
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="css/ui-anim.css">
+	<script src="js/zy_control.js"></script>
+	<script src="js/zy_click.js"></script>
+	<script src="js/zy_anim.js"></script>
+	<script src="js/zy_slide.js"></script>
+	<style>
+	.uinn33{
+		padding:0.3em 0;
+	}
+	.resBG{
+		background-image:url('images/loginbg.png');
+	}
+	.uinn05{
+		padding: 0.55em 0 !important;
+	}
+	.btnbg{
+		background-color: rgba(255,0,0,0.55) !important
+	}
+	.btn-act2{
+		background-color: rgba(255,0,0,0.8) !important
+	}
+	.point{
+		width:0.5em;
+		height:0.5em;
+		-webkit-border-radius: 50%;
+		background-color:#8d8d8d;
+		margin: 0 .25em;
+	}
+	input[type="radio"]:checked + div.point{
+		background-color: #fff;
+	}
+	@media screen and (orientation:portrait) {
+        
+        .img-1{
+            background-image: url('images/help-01-V.png');
+        }
+        .img-2{
+            background-image: url('images/help-02-V.png');
+        }
+        .img-3{
+            background-image: url('images/help-03-V.png');
+        }
+        .img-4{
+            background-image: url('images/help-04-V.png');
+        }
+		.img-5{
+            background-image: url('images/guild-13.png');
+        }
+    }
+    @media screen and (orientation:landscape) {
+        .img-1{
+            background-image: url('images/help-01-H.png');
+        }
+        .img-2{
+            background-image: url('images/help-02-H.png');
+        }
+        .img-3{
+            background-image: url('images/help-03-H.png');
+        }
+        .img-4{
+            background-image: url('images/help-04-H.png');
+        }
+		.img-5{
+            background-image: url('images/guild-13-H.png');
+        }
+    }
+    
+	</style>
+</head>
+<body class="um-vp ub-img6 resBG" ontouchstart>
+	<div id="guider" class="up ub ub-ver uof" tabindex="0">
+        <div id="slider" class="ub-f1 ub-fv ub">
+			<!--div class="ub-fh ub-img6 img-1"></div>
+			<div class="ub-fh ub-img6 img-2"></div>
+			<div class="ub-fh ub-img6 img-3"></div-->
+			<div class="ub-fh ub-img6 ub ub-ver img-5">
+				<div style="height:1em"></div>
+				<div class="ub ub-pc">
+					<div class="" style="padding:.1em 1em;" ontouchstart="zy_touch('')" onclick="appRunning()" id="apprun">
+						<div class="ub-img4" style="padding:2em 3em; background-image:url('images/start-new.png');"></div>
+					</div>
+				</div>
+				<div class="ub-f1"></div>
+			</div>
+			</div>
+        </div>
+		<div class="ub ub-pc ub-fh" style="position:absolute;bottom:1em;z-index:100;">
+			<!--input class="uhide" type="radio" name="rd" id="rd0" checked="checked"/>
+			<div class="point"></div>
+			<input class="uhide" type="radio" name="rd" id="rd1"/>
+			<div class="point"></div>
+			<input class="uhide" type="radio" name="rd" id="rd2"/>
+			<div class="point"></div>
+			<input class="uhide" type="radio" name="rd" id="rd3"/>
+            <div class="point"></div-->
+		</div>
+    </div>
+</body>
+<script>
+zy_init();
+window.uexOnload = function(type){
+	//setKeyListener();
+	window.onorientationchange=function(){
+        //window.location.href=window.location.href;
+        mySlide.refresh();
+        var ii = localStorage["dh-index"] || 0;
+        mySlide.moveToPoint(ii,'0');
+        $$("rd"+ii).checked = true;
+    }
+}
+
+function setKeyListener(){
+	uexWindow.onKeyPressed = function(keyCode){
+        if (keyCode == 0) uexWidget.finishWidget('');
+    }
+    uexWindow.setReportKey(0, 1);
+    
+}
+
+function appRunning(){
+	uexWindow.close(14);
+}
+
+var guildShowed = '';
+var mySlide = null;
+var lastPoint = 0;
+if(guildShowed){
+	$$('guider').className = 'uhide';
+	$$('page_0').className = 'up ub ub-ver';
+}
+else mySlide = new zySlide("slider",'H',endFunCb,'1',transEndCb,0);
+function transEndCb(e){
+	var i = mySlide.currentPoint;
+	$$('rd'+i).checked = true;
+	if(i>0 && lastPoint==i) appRunning();
+	lastPoint = i;
+	logs('transEndCb---->'+i);
+	localStorage["dh-index"] = i;
+}
+function endFunCb(e){
+	var i = mySlide.currentPoint;
+	logs('endFunCb---->'+i);
+}
+/* * * * * * * * * * * * * * * * * * * */
+</script>
+</html>

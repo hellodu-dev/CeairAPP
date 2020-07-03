@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-tab.css">
+    <link rel="stylesheet" href="css/ui-img.css">
+    <link rel="stylesheet" href="css/ui-list.css">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/ui-color.css">
+	<link rel="stylesheet" href="css/ui-res.css">
+	<link rel="stylesheet" href="css/login.css">
+	<script src="js/zy_control.js"></script>
+	<script src="js/zy_click.js"></script>
+	<style>
+	.isize{
+		width: 2em;
+		height: 2em;
+	}
+	.fback{
+		background-image:url('images/wback.png');
+	}
+	.fforward{
+		background-image:url('images/wforw.png');
+	}
+	.btn-act0 .fback{
+		background-image:url('images/wback-act.png');
+	}
+	.btn-act0 .fforward{
+		background-image:url('images/wforw-act.png');
+	}
+	</style>
+</head>
+    <body class="um-vp c-gra1" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="uh ub t-wh c-bluhead">
+				<div class="umw4 ub ub-ac ub-pa" ontouchstart="zy_touch()" onclick="closeWind();">
+					<div class="ub-img5 back"></div>
+					<p>返回</p>
+				</div>
+				<h1 class="ub-f1 ut ulev0 ut-s tx-c pd-header" id="ttl">关于</h1>
+				<div class="umw4" ontouchstart="zy_touch()"></div>
+            </div> 
+            <!--header结束--><!--content开始-->
+            <div id="content" class="ub-f1">
+	           <div class="ub ub-ver ub-ac ub-pc" style="padding-top:2em;">
+	           		<img src="Icon.png" style="width:4em; height:4em;" ontouchstart="zy_touch()" onclick="openDebug();"/>
+					<p class="uinn5">掌上东航HD</p>
+					<p class="uinn5" id="ver"></p>
+					<p id="debug"></p>
+				</div>
+            </div>
+        </div>
+    </body>
+<script>
+zy_init();
+window.uexOnload = function(type){
+	if (!type) {
+        //zy_con("content", 'webpage_content.html', 0, $$("header").offsetHeight);
+    }
+	window.onorientationchange=window.onresize=function(){
+		zy_resize("content",0,$$("header").offsetHeight);				
+	}
+	
+	getCurrentWidgetInfo();
+	
+	var isDebug = getstorage('isDebug');
+	if(isDebug=='DEBUG') setHtml('debug', 'DEBUG');
+}
+
+function closeWind(){
+	uexWindow.close(-1);
+}
+
+function getCurrentWidgetInfo(){
+	uexWidgetOne.cbGetCurrentWidgetInfo = function(a, b, c){
+		logs('getCurrentWidgetInfo-->'+c);
+		var obj = str2Json(c);
+		var str = isTestVesion?' 测试环境':'';
+		setHtml('ver', 'V'+obj.version+str);
+		
+	}
+	uexWidgetOne.getCurrentWidgetInfo();
+}
+
+var ii = 0;
+function openDebug(){
+	ii++;
+	if(ii>9){
+		var isDebug = getstorage('isDebug');
+		if(isDebug=='DEBUG') isDebug = '';
+		else isDebug = 'DEBUG';
+		setHtml('debug', isDebug);
+		setstorage('isDebug', isDebug);
+		ii = 0;
+	}
+}
+
+</script>
+</html>

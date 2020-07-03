@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-tab.css">
+    <link rel="stylesheet" href="css/ui-img.css">
+    <link rel="stylesheet" href="css/ui-list.css">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/ui-color.css">
+	<link rel="stylesheet" href="css/ui-res.css">
+	<link rel="stylesheet" href="css/login.css">
+	<script src="js/zy_control.js"></script>
+	<script src="js/zy_click.js"></script>
+	<script src="js/zy_event.js"></script>
+	<style>
+	.ui-slider {
+		display: block;
+		border-radius: 1em;
+		-webkit-border-radius: 1em;
+		width: 3.2em;
+		height: 1.6em;
+		background-color:#bbbebc;
+		-webkit-transition: all 200ms linear 0;
+	}
+	.ui-slider-check {
+		display: block;
+		border-radius: 0.9em;
+		-webkit-border-radius: 0.9em;
+		background-color: #fff;
+		position: absolute;
+		top: 0.1em;
+		z-index: 0;
+		width: 1.5em;
+		height: 1.4em;
+		-webkit-transition: all 200ms linear 0;
+	}
+	input + div.ui-slider{
+		background-color:#bbbebc
+	}
+	input:checked + div.ui-slider{
+		background-color:#7CB2EC 
+	}
+	input + div>div.ui-slider-check{
+		background-color: #fff;
+		left: 0.15em;
+	}
+	input:checked + div>div.ui-slider-check{
+		background-color: #fff;
+		left: 1.65em;
+	}
+	</style>
+</head>
+    <body class="um-vp c-gra1" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="uh ub t-wh c-bluhead">
+				<div class="umw4 ub ub-ac ub-pa" ontouchstart="zy_touch()" onclick="closeWind();">
+					<div class="ub-img5 back"></div>
+					<p>返回</p>
+				</div>
+				<h1 class="ub-f1 ut ulev0 ut-s tx-c pd-header" id="ttl">下载设置</h1>
+				<div class="umw4" ontouchstart="zy_touch()"></div>
+            </div> 
+            <!--header结束-->
+			
+			<!--content开始-->
+            <div id="content" class="ub-f1">
+            	<div class="" style="padding-top:0.4em">
+	            	<div class="ub c-wh umarb ub-ac ub-pc">
+						<div class="uinn ub ub-ac ub-f1">
+							<div class="ub-f1 uinn">仅在wifi情况下载<span id="st0"></span></div>
+							<div class="ub-img arrr-img"></div>
+						</div>
+						
+						<div class="uinn" id="sl0">
+							<input type="checkbox" class="uhide" id="che0" checked="checked">
+							<div class="ui-slider" ontouchstart="zy_touch('')" onclick="changeStatus('','','che0')">
+								<div class="ui-slider-check"></div>
+							</div>
+						</div>
+					</div>
+					<div style="padding-left:1em">
+						<div class="ubb b-gra"></div>
+					</div>
+					<div class="ub c-wh umarb ub-ac ub-pc ubb b-gra">
+						<div class="uinn ub ub-ac ub-f1">
+							<div class="ub-f1 uinn">wifi下自动更新<span id="st1"></span></div>
+							<div class="ub-img arrr-img"></div>
+						</div>
+						
+						<div class="uinn" id="sl1">
+							<input type="checkbox" class="uhide" id="che1" checked="checked">
+							<div class="ui-slider" ontouchstart="zy_touch('')" onclick="changeStatus('','','che1')">
+								<div class="ui-slider-check"></div>
+							</div>
+						</div>
+					</div>
+					<div class="uhide" style="padding-left:1em">
+						<div class="ubb b-gra"></div>
+					</div>
+					<div class="uhide c-wh umarb ub-ac ub-pc  ubb b-gra">
+						<div class="uinn ub ub-ac ub-f1">
+							<div class="ub-f1 uinn">是否接受更新提醒<span id="st2"></span></div>
+							<div class="ub-img arrr-img"></div>
+						</div>
+						
+						<div class="uinn" id="sl2">
+							<input type="checkbox" class="uhide" id="che2" checked="checked">
+							<div class="ui-slider" ontouchstart="zy_touch('')" onclick="changeStatus('','','che2')">
+								<div class="ui-slider-check"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </body>
+<script>
+zy_init();
+window.uexOnload = function(type){
+	if (!type) {
+        //zy_con("content", 'webpage_content.html', 0, $$("header").offsetHeight);
+    }
+	window.onorientationchange=window.onresize=function(){
+		zy_resize("content",0,$$("header").offsetHeight);				
+	}
+	
+	for(var i=0; i<3; i++){
+		var s = getstorage('MU3-settingNTK-che'+i);
+		logs('[settingNetwork] ---->'+s);
+		var bl = (s=='false')?false:true;
+		if(s) changeStatus(1, bl, 'che'+i);
+	}
+}
+
+function closeWind(){
+	uexWindow.close(-1);
+}
+
+function changeStatus(f, s, id){
+	logs('[settingNetwork] changeStatus()---->'+f+'|'+s+'|'+id);
+	var ch = $$(id);
+	if(ch) ch.checked = !ch.checked;
+	if(f) ch.checked = s;
+	
+	var str = ch.checked?'开':'关';
+	//setHtml('status', str);
+	logs('[settingNetwork] changeStatus()---->'+ch.checked);
+	
+	setstorage('MU3-settingNTK-'+id, ch.checked);
+	
+	if('che2' == id){
+		var state = ch.checked?1:0;
+		uexWidget.setPushState(state);
+	}
+}
+
+var mySlide = [];/*
+mySlide[0] = new zyEvent('sl0',null,function(e, dx, dy, t){
+	logs('mySlide0 t----->'+t);
+},'1',null);
+mySlide[1] = new zyEvent('sl1',null,function(e, dx, dy, t){
+	logs('mySlide1 t----->'+t);
+},'1',null);
+mySlide[3] = new zyEvent('sl2',null,function(e, dx, dy, t){
+	logs('mySlide2 t----->'+t);
+},'1',null);
+*/
+</script>
+</html>

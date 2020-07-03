@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+<title>
+</title>
+<meta charset="utf-8">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="css/ui-base.css">
+<link rel="stylesheet" href="css/ui-box.css">
+<link rel="stylesheet" href="css/ui-color.css">
+<link rel="stylesheet" href="css/login.css">
+<script src="js/zy_control.js"></script>
+<script src="js/zy_click.js"></script>
+<script src="js/zy_anim.js"></script>
+<script src="js/zy_tmpl.js"></script>
+<script></script>
+<style>
+input[type="radio"]:checked + div.rad-ch{
+	display: none !important;
+}
+input[type="radio"] + div.rad-ch{
+}
+
+.utra{
+	-webkit-transition:all 300ms ease-out 1ms
+}
+input[type="radio"]:checked + div.res-down{
+	-webkit-transform:rotate(180deg);
+}
+
+.scale0{
+	/*-webkit-transform:scale(0.5,0.5);
+	-webkit-transform:translateX(-50%);*/
+	opacity:0.3;
+}
+
+.umh3{
+	/*min-height:1.75em;*/
+	height:0em;
+}
+.c-field{
+	background-color:#f4f4f4;
+}
+.b-field{
+	border-color:#e0e0e0;
+}
+.c-blu1{
+	color:white;
+	background-color:#4A8DDB;
+}
+.res-field{
+	width: 3.5em;
+	height: 3.5em;
+}
+.umw5{
+	min-width:5em;
+}
+.ulev-11 {
+	font-size: 0.75em !important;
+}
+.ptop0{
+	padding-top:0;
+}
+.divf{
+	float:left;
+}
+.divClear{
+	clear:both;
+}
+.umar-rt{
+	margin: 0 .4em .75em 0;
+}
+.uinn75{
+	padding:0.75em 0;
+	margin:0;
+}
+.uinn11{
+	padding:0.75em 0.5em 0;
+	margin:0;
+}
+.uinn0555{
+	padding:0 0.5em 0.5em 0.5em;
+	margin:0;
+}
+.umt0505{
+	margin: 0 -0.5em 0 -0.5em;
+}
+.umt5000{
+	margin-top: 0.5em;
+}
+.umt5000 p
+{
+    margin-top: 0.5em;
+}
+.ubs0111{
+	border:.0875em dashed #C0C0C0;
+	border-top-width:0;
+}
+</style>
+</head>
+<body class="um-vp c-pageBg" ontouchstart>
+	<div class="up" id="page">
+		<div class="ub ubb b-field ub-ac c-field" ontouchstart="zy_touch()" onclick="changeField(0);" id="mu-0" name="dominField">
+			<div class="ub-f1 uinn55 u-fw" style="color:#0980d9" id="dn0">运行领域</div>
+			<input class="uhide" type="radio" name="iocnr0" id="ic-0">
+			<div class="ub-img5 res-wh res-down utra"></div>
+		</div>
+		<input class="uhide" type="radio" name="f0" id="fd-0" checked="true">
+		<div class="ubb b-field rad-ch utra scale0 uinn0555" id="add-0">
+			<div class="umt5000">
+				<p>4月2日上海到北京</p>
+                <p>4月2日587的航班</p>
+                <p>4月2日机号B2001的航班</p>
+                <p>查询4月2日上海到北京余票</p>
+                <p>昨天取消的XX机场航班</p>
+                <p>昨天返航的XX机场航班</p>
+                <p>昨天备降的XX机场航班</p>
+                <p>当前延误中的XX机场航班</p>
+                <p>当前XX机场航班延误影响的旅客人数</p>
+                <p>半小时内等待旅客人数</p>
+                <p>5137客腹舱业载预估</p>
+                <p>虹桥的延误数</p>
+                <p>虹桥的正常率</p>
+                <p>虹桥的进出港数据</p>
+                <p>今日虹桥气象</P>
+                <p>关注4月2日587航班</p>
+                <p>查询4月2日587旅客信息</p>
+                <p>查询4月2日587机组信息</p>
+                <p>查询4月2日587货运业载</p>
+                <p>查询4月2日587装机单</p>
+                <p>空中飞机</p>
+                <p>过站飞机</p>
+                <p>过夜飞机</p>
+                <p>停场飞机</p>
+                <p>AOG飞机</p>
+			</div>
+		</div>
+		<div class="ub ubb b-field ub-ac c-field" ontouchstart="zy_touch()" onclick="changeField(5);" id="mu-5" name="dominField">
+			<div class="ub-f1 uinn55 u-fw" style="color:#824bad" id="dn5">乘务领域</div>
+			<input class="uhide" type="radio" name="iocnr5" id="ic-5">
+			<div class="ub-img5 res-wh res-down utra"></div>
+		</div>
+		<input class="uhide" type="radio" name="f5" id="fd-5" checked="true">
+		<div class="ubb b-field rad-ch utra scale0 uinn0555" id="add-5">
+			<div class="umt5000">
+			    <p>请查询下明天的航班任务</p>
+                <p>查询机组排班</p>
+                <p>查询换班信息</p>
+                <p>休息申请</p>
+                <p>语音唤起网上准备</p>
+                <p>语音查询业务通信息</p>                           
+                <p>查询飞行小时</p>
+                <p>查询规程分</p>
+                <p>查询提名</p>
+                <p>查询延误记点</p>
+                <p>查询签证信息</p>
+                <p>查询任务书信息</p>
+			</div>
+		</div>
+		<div class="ub ubb b-field ub-ac c-field" ontouchstart="zy_touch()" onclick="changeField(2);" id="mu-2" name="dominField">
+			<div class="ub-f1 uinn55 u-fw" style="color:#06c7b7" id="dn2">营销领域</div>
+			<input class="uhide" type="radio" name="iocnr2" id="ic-2">
+			<div class="ub-img5 res-wh res-down utra"></div>
+		</div>
+		<input class="uhide" type="radio" name="f2" id="fd-2" checked="true">
+		<div class="ubb b-field rad-ch utra scale0 uinn0555" id="add-2">
+			<div class="umt5000">
+				<p>查看销售收入分析</p>
+                <p>查看航班正常率</p>
+                <p>航班变更审批</p>
+                <p>查看代理人信息</p>
+                <p>查看销售分析(代理人)</p>
+                <p>查看执行效率分析</p>
+                <p>查看贡献收入分析</p>
+                <p>会员个人信息业务审批</p>
+                <p>会员积分业务审批</p>
+                <p>查看航班变更明细</p>
+                <p>查看机队运行分析</p>
+                <p>查看渠道分析(国际)</p>
+                <p>渠道救援减分操作</p>
+                <p>渠道救援加分操作</p>
+                <p>查看渠道分析(国内)</p>
+                <p>常旅客金银卡特批</p>
+                <p>查看运价生效明细</p>
+                <p>运价平级传送</p>
+                <p>查看销售预警</p>
+                <p>查看KPI</p>
+                <p>周报日志审批</p>
+                <p>查看销售分析(国内)</p>
+			</div>
+		</div>
+		<div class="ub ubb b-field ub-ac c-field" ontouchstart="zy_touch()" onclick="changeField(3);" id="mu-3" name="dominField">
+			<div class="ub-f1 uinn55 u-fw" style="color:#937452" id="dn3">飞行领域</div>
+			<input class="uhide" type="radio" name="iocnr3" id="ic-3">
+			<div class="ub-img5 res-wh res-down utra"></div>
+		</div>
+		<input class="uhide" type="radio" name="f3" id="fd-3" checked="true">
+		<div class="ubb b-field rad-ch utra scale0 uinn0555" id="add-3">
+			<div class="umt5000">
+                <p>请显示未读的“必读通知”</p>
+                <p>我的日程安排</p>
+                <p>请显示我的未准备任务</p>
+                <p>准备任务</p>
+                <p>网上准备</p>
+                <p>打开‘员工主动安全报告’</p>
+                <p>打开‘SMS’</p>
+                <p>我即将过期的‘证照’</p>
+                <p>我即将过期的‘资格资质'</p>
+                <p>我关注的航班</p>
+                <p>我的排班变动</p>
+                <p>直接准备单</p>
+                <p>机型手册</p>
+                <p>我都有哪些资质</p>
+                <p>我的聘书信息</p>
+                <p>我的执照信息</p>
+                <p>飞行小时</p>
+                <p>XX年XX月的飞行小时</p>
+                <p>飞行经历</p>
+			</div>
+		</div>
+		<div class="ub ubb b-field ub-ac c-field" ontouchstart="zy_touch()" onclick="changeField(4);" id="mu-4" name="dominField">
+			<div class="ub-f1 uinn55 u-fw" style="color:#525ba4" id="dn4">管控领域</div>
+			<input class="uhide" type="radio" name="iocnr4" id="ic-4">
+			<div class="ub-img5 res-wh res-down utra"></div>
+		</div>
+		<input class="uhide" type="radio" name="f4" id="fd-4" checked="true">
+		<div class="ubb b-field rad-ch utra scale0 uinn0555" id="add-4">
+			<div class="umt5000">
+				<p>请打开我的待办</p>
+                <p>今天我有没有待办</p>
+                <p>打开通讯录</p>
+			</div>
+		</div>
+		<div class="ub ubb b-field ub-ac c-field" ontouchstart="zy_touch()" onclick="changeField(1);" id="mu-1" name="dominField">
+			<div class="ub-f1 uinn55 u-fw" style="color:#6ac00e" id="dn1">地服领域</div>
+			<input class="uhide" type="radio" name="iocnr1" id="ic-1">
+			<div class="ub-img5 res-wh res-down utra"></div>
+		</div>
+		<input class="uhide" type="radio" name="f1" id="fd-1" checked="true">
+		<div class="ubb b-field rad-ch utra scale0 uinn0555" id="add-1">
+			<div class="umt5000">
+				<p>智能监控</p>
+                <p>绩效打分</p>
+                <p>装机单</p>
+                <p>查看考勤</p>
+                <p>打开遗留物品功能</p>
+                <p>查看不正常航班情况</p>
+
+			</div>
+		</div>
+		<div class="ub ubb b-field ub-ac c-field" ontouchstart="zy_touch()" onclick="changeField(6);" id="mu-6" name="dominField">
+			<div class="ub-f1 uinn55 u-fw" style="color:#f39d02" id="dn6">运维领域</div>
+			<input class="uhide" type="radio" name="iocnr6" id="ic-6">
+			<div class="ub-img5 res-wh res-down utra"></div>
+		</div>
+		<input class="uhide" type="radio" name="f6" id="fd-6" checked="true">
+		<div class="ubb b-field rad-ch utra scale0 uinn0555" id="add-6">
+			<div class="umt5000">
+				<p>我要报修</p>
+			</div>
+		</div>
+		<div class="uinn"></div>
+	</div>
+</body>
+<script>
+zy_init();
+window.uexOnload=function(type){
+	if(!type){
+		
+	}
+}
+function changeField(i){
+	logs('[tabList] changeField() --------->'+i);
+	if(!isSML && event && event.type=='click') return;
+	
+	var ele1 = $$('fd-'+i);
+	ele1.checked = !ele1.checked;
+	
+	var ele2 = $$('ic-'+i);
+	ele2.checked = !ele2.checked;
+	
+	if(ele1.checked){
+		//setTimeout(function(){
+			zy_anim_push('add-'+i,'scale0');
+		//},1);
+	}
+	else{
+		setTimeout(function(){
+			zy_anim_pop('add-'+i,'scale0');
+		},1);
+	}
+	
+	if(lastFieldIndex!=i){
+		var ele3 = $$('fd-'+lastFieldIndex) || {};
+		ele3.checked = true;
+		zy_anim_push('add-'+lastFieldIndex,'scale0');
+		lastFieldIndex = i;
+	}
+	
+	if (!ele1.checked) {
+		try {
+			var _h = 0;
+			var ii = i;
+			var ndEle = document.getElementsByName('dominField');
+			for(var _k in ndEle){
+				var ndEle1 = ndEle[_k];
+				if(ndEle1 && ndEle1.id==('mu-'+ii)) break;
+				_h += ndEle1.offsetHeight;
+			}
+			logs('body.scrollTop------>'+_h);
+		} catch (e) {}
+	}
+}
+</script>
+</html>

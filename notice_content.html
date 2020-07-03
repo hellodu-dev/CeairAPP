@@ -1,0 +1,92 @@
+<!--
+ * @Author: hanzhg
+ * @Date: 2015-09-18 18:58:22
+ * @LastEditTime: 2020-06-24 08:40:54
+ * @LastEditors: hanzhg
+ * @Description: In User Settings Edit
+ * @FilePath: /widget/notice_content.html
+--> 
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+<title>
+</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/ui-color.css">
+	<link rel="stylesheet" href="css/ui-res.css">
+	<script src="js/zy_control.js"></script>
+	<script src="js/zy_click.js"></script>
+	<style type="text/css">
+		.qimo8{ overflow:hidden;}
+		.qimo8 .qimo {/*width:99999999px;*/width:8000%;}
+		.qimo8 .qimo div{ float:left;}
+		.qimo8 .qimo ul{float:left;overflow:hidden; zoom:1; }
+		.qimo8 .qimo ul li{float:left; list-style:none; margin-left:1.5em;}
+		.c-blaop{background-color:rgba(244,247,255,0.96);}
+	</style>
+</head>
+<body class="um-vp" ontouchstart>
+<div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+		<div id="footer" class="ub c-blaop ub-ac t-bla" style="height:3.5em">
+			<div class="ub-f1 ub"  ontouchstart="zy_touch('t-org')" onclick="showAd();">
+				<div id="demo" class="qimo8">
+					<div class="qimo">
+						<div id="demo1">
+							<ul>
+							</ul>
+						</div>
+						<div id="demo2"></div>
+					</div>
+				</div>
+			</div>
+			<div class="uinl uinn3" id="delbtn" onclick="delbtn()">    
+				<div class="ub-img res5 umh2 umw2"> </div>
+			</div>
+		</div>
+    </div>
+</body>
+<script>
+zy_init();
+window.uexOnload=function(type){
+	if(!type){
+		setInterval(Marquee,30);
+	}
+}
+
+//底部广告滚动
+var demo = $$("demo");
+var demo1 = $$("demo1");
+var demo2 = $$("demo2");
+//var myvar = setInterval(Marquee,30);
+demo2.innerHTML = $$("demo1").innerHTML;
+
+function Marquee(){
+	if(demo.scrollLeft-demo2.offsetWidth>=0){
+		demo.scrollLeft -= demo1.offsetWidth;
+	}
+	else{
+		demo.scrollLeft++;
+	}
+}
+
+function delbtn(){
+	uexWindow.closePopover('notice');
+}
+
+function showAd(){
+	var appInfo = ''; 
+	var filter = '';
+	var pf = getstorage('platform');
+	if(uexWidgetOne.platformName=='android'){
+		appInfo = 'android.intent.action.VIEW';
+		filter = 'text/html';
+	}
+	uexWidget.loadApp(appInfo, filter, dataInfo);
+}
+</script>
+</html>

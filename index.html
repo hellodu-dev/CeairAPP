@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/ui-color.css">
+	<link rel="stylesheet" href="css/ui-res.css">
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="css/ui-anim.css">
+	<script src="js/zy_control.js"></script>
+	<script src="js/zy_click.js"></script>
+	<script src="js/zy_anim.js"></script>
+	<script src="js/zy_slide.js"></script>
+	<style>
+		.imglogo{
+			width:4em;
+			height:4em;
+			background-image:url('images/logo3.png');
+		}
+	
+	</style>
+</head>
+<body class="um-vp" ontouchstart>
+	    <div id="page_0" class="up ub ub-ver" tabindex="0">
+        <!--header开始-->
+        <div id="header" class="uh c-org c-m1 t-wh ub">
+        	<div class="umw4" ontouchstart="zy_touch()">
+        	</div>
+            <h1 class="ut ub-f1 ulev0 ut-s tx-c">AppCan</h1>
+			<div class="umw4" ontouchstart="zy_touch()" onclick="">
+            <!--插入按钮控件-->
+        	</div>
+        </div>
+        <!--header结束--><!--content开始-->
+        <div id="content" class="ub-f1 c-gra  ub ub-ac ub-pc ub-ver">
+            <div class="ub-img imglogo" style="" id="logo" ontouchstart="zy_touch('btn-act2')" onclick="startApp()"></div>
+			<p id="name">掌上东航</p>
+        </div>
+        <!--content结束--><!--footer开始-->
+        <div id="footer" class="uf c-m2 c-bla t-wh">
+        </div>
+        <!--footer结束-->
+    </div>
+</body>
+<script>
+zy_init();
+window.uexOnload = function(type){
+	getAppInfo();
+	uexWidget.cbStartWidget = cbStartWidget;
+}
+
+function getAppInfo(){
+	logs('initDeviceInfo()   start --------------------------->');
+	uexWidgetOne.cbGetCurrentWidgetInfo = function(a, b, c){
+		logs('cbGetCurrentWidgetInfo() ----------------->'+c);
+		var obj = c?str2Json(c):null;
+		if(obj){
+			setstorage('MU3-appId', obj.appId);
+			setstorage('MU3-version', obj.version);
+			setstorage('MU3-icon', obj.icon);
+			logs('getCurrentWidgetInfo   appId-->'+obj.appId);
+			//$$('logo').style.backgroundImage = "url('" + obj.icon + "')";
+			uexFileMgr.cbGetFileRealPath = function(opCode, dataType, path) {
+				//setstorage('MU30-WGTPATH', path);
+				//$$('logo').style.backgroundImage = "url('" + path + "')";
+			}
+			uexFileMgr.getFileRealPath(obj.icon);
+		}
+	}
+	//获取应用相关信息: appid, version, icon
+	uexWidgetOne.getCurrentWidgetInfo();
+}
+var obj = {
+}
+function startApp(){
+	uexWidget.startWidget(obj.inAppId,'10',null,null,250,obj.inKey);
+}
+
+
+function cbStartWidget(opId,dataType,data){
+	logs('[index] cbStartWidget----opId='+opId+'-->data=='+data);
+	wgtStartObjWait = null;
+	if(data==2) uexWindow.alert('提示','您要启动的应用不存在！','确定');
+	else if(data==1){
+		//downloadFile(url, appid, opid, downloadFileSuccCb, 'tabLists');
+		uexWindow.alert('提示','应用启动失败！','确定');
+	}
+}
+</script>
+</html>

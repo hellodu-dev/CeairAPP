@@ -1,0 +1,64 @@
+.res1{
+	background-image: url(images/icons-18-white_13.png)!important;
+}
+.res2
+{
+	background-image:url('images/t-arrow.png');
+}
+
+.res3
+{
+	background-image:url('images/b-arrow.png');
+}
+.res4
+{
+	background-image:url('images/add-icon.png')!important;
+}
+.res5 {
+	background-image: url(images/del.png);
+}
+.res6{
+	background-image: url(images/icon-search-black.png);
+}
+.res7 {
+	background-image: url(images/refresh.png);
+}
+.res8{
+	background-image: url('images/arrow.png');
+}
+
+.res9
+{
+	background-image: url('images/selected.png');
+}
+
+.res10
+{
+	background-image:url('img/appcan.png')!important;
+}
+
+.res-bg
+{
+	background-image:url('img/bg.png')!important;
+}
+
+.res-vol {
+	background-image: url(../images/vol02.png);
+}
+
+.img-search {
+	background-image: url(../images/search.png);
+}
+
+.img-pageBg-V {
+	background-image: url(../images/bgPageV.png);
+}
+.img-pageBg-H {
+	background-image: url(../images/bgPageH.png);
+}
+.img-xiaoiPageBg-V {
+	background-image: url(../images/xiaoiPageV.png);
+}
+.img-xiaoiPageBg-H {
+	background-image: url(../images/xiaoiPageH.png);
+}

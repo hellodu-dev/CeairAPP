@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-input.css">
+    <link rel="stylesheet" href="css/ui-tab.css">
+    <link rel="stylesheet" href="css/ui-img.css">
+    <link rel="stylesheet" href="css/ui-list.css">
+	<link rel="stylesheet" href="css/ui-btn.css">
+	<link rel="stylesheet" href="css/ui-base.css">
+	<link rel="stylesheet" href="css/ui-box.css">
+	<link rel="stylesheet" href="css/ui-color.css">
+	<link rel="stylesheet" href="css/ui-res.css">
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="css/ui-anim.css">
+	<script src="js/zy_control.js"></script>
+	<script src="js/zy_click.js"></script>
+	<script src="js/zy_event.js"></script>
+	<script src="js/zy_anim.js"></script>
+	<style>
+	.ui-slider {
+		display: block;
+		border-radius: 1em;
+		-webkit-border-radius: 1em;
+		width: 3.2em;
+		height: 1.6em;
+		background-color:#bbbebc;
+		-webkit-transition: all 200ms linear 0;
+	}
+	.ui-slider-check {
+		display: block;
+		border-radius: 0.9em;
+		-webkit-border-radius: 0.9em;
+		background-color: #fff;
+		position: absolute;
+		top: 0.1em;
+		z-index: 0;
+		width: 1.5em;
+		height: 1.4em;
+		-webkit-transition: all 200ms linear 0;
+	}
+	input + div.ui-slider{
+		background-color:#bbbebc
+	}
+	input:checked + div.ui-slider{
+		background-color:#7CB2EC 
+	}
+	input + div>div.ui-slider-check{
+		background-color: #fff;
+		left: 0.15em;
+	}
+	input:checked + div>div.ui-slider-check{
+		background-color: #fff;
+		left: 1.65em;
+	}
+	.img-dec{
+		background-image:url(images/add1.png);
+	}
+	.img-add{
+		background-image:url(images/add2.png);
+	}
+	.img-arr{
+		width:2em;
+		height:1.5em;
+		background-image:url(images/arrr3.png);
+	}
+	.img-border{
+		background-image:url(images/add3.png);
+	}
+	</style>
+</head>
+    <body class="um-vp c-gra1" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="uh ub t-wh c-bluhead">
+				<div class="umw4 ub ub-ac ub-pa" ontouchstart="zy_touch()" onclick="closeWind();">
+					<div class="ub-img5 back"></div>
+					<p>返回</p>
+				</div>
+				<h1 class="ub-f1 ut ulev0 ut-s tx-c pd-header" id="ttl" ontouchstart="zy_touch()" onclick="selectPP();">系统设置</h1>
+				<div class="umw4" ontouchstart="zy_touch()"></div>
+            </div> 
+            <!--header结束-->
+			
+			<!--content开始-->
+            <div id="content" class="ub-f1">
+            	<div class="umar-t" style="padding-top:0.4em">
+					<div class="ub c-wh ub-ac ub-pc uinn" ontouchstart="zy_touch('c-gra')" onclick="networkSetting()">
+						<div class="ub-f1 uinn">下载设置</div> 
+						<div class="ub-img5 img-arr"></div>
+					</div>
+				</div>
+				
+            	<div class="umar-t">
+            		<div class="uhide c-wh umarb ub-ac ub-pc ubb b-gra">
+						<div class="uinn b-gra22 ub ub-ac ub-f1">
+							<div class="ub-f1 uinn">仅在wifi情况下载<span id="st0"></span></div>
+							<div class="ub-img arrr-img"></div>
+						</div>
+						
+						<div class="uinn" id="sl0">
+							<input type="checkbox" class="uhide" id="che0" checked="checked">
+							<div class="ui-slider" ontouchstart="zy_touch('')" onclick="changeStatus('','','che0')">
+								<div class="ui-slider-check"></div>
+							</div>
+						</div>
+					</div>
+					<div class="uhide c-wh umarb ub-ac ub-pc  ubb b-gra">
+						<div class="uinn b-gra22 ub ub-ac ub-f1">
+							<div class="ub-f1 uinn">wifi下自动更新<span id="st1"></span></div>
+							<div class="ub-img arrr-img"></div>
+						</div>
+						
+						<div class="uinn" id="sl1">
+							<input type="checkbox" class="uhide" id="che1" checked="checked">
+							<div class="ui-slider" ontouchstart="zy_touch('')" onclick="changeStatus('','','che1')">
+								<div class="ui-slider-check"></div>
+							</div>
+						</div>
+					</div>
+					<div class="ub c-wh umar-b ub-ac ub-pc">
+						<div class="uinn b-gra22 ub ub-ac ub-f1">
+							<div class="ub-f1 uinn">是否接受推送消息<span id="st2"></span></div>
+							<div class="ub-img arrr-img"></div>
+						</div>
+						
+						<div class="uinn" id="sl2">
+							<input type="checkbox" class="uhide" id="che2" checked="checked">
+							<div class="ui-slider" ontouchstart="zy_touch('')" onclick="changeStatus('','','che2')">
+								<div class="ui-slider-check"></div>
+							</div>
+						</div>
+					</div>
+					
+	            	<div class="ub c-wh umarb ub-ac ub-pc">
+						<div class="uinn b-gra22 ub ub-ac ub-f1">
+							<div class="ub-f1 uinn">摇一摇开关<span id="status"></span></div>
+							<div class="ub-img arrr-img"></div>
+						</div>
+						
+						<div class="uinn" id="sl">
+							<input type="checkbox" class="uhide" id="che" checked="checked">
+							<div class="ui-slider" ontouchstart="zy_touch('')" onclick="changeStatusShake()">
+								<div class="ui-slider-check"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="umar-t">
+					<div class="ub c-wh ub-ac ub-pc uinn">
+						<div class="ub-f1 uinn">磁帖置顶栏数目</div>
+						<div class="ub-img4 logo img-dec" ontouchstart="zy_touch('')" onclick="resetTabNum(0)"></div>
+						<div class="uinput ub ub-ac ub-pc ub-img5 logo img-border">
+							<p id="tabs" onblur="iOnblur();">10</p>
+							<!--input value="10" max="30" min="5" type="number" disabled="disabled" class="uc-a1 tx-c" style="width:1.75em;padding: 0.185em 0;" id="tabs" onblur="iOnblur();"-->   
+						</div>  
+						<div class="ub-img4 logo img-add" ontouchstart="zy_touch('')" onclick="resetTabNum(1)"></div>
+					</div>
+				</div>
+				
+				<div class="umar-t uhide" id="touchid">
+					<div class="ub c-wh ub-ac ub-pc">
+						<div class="uinn b-gra22 ub ub-ac ub-f1">
+							<div class="ub-f1 uinn">指纹登录<span id="st3"></span></div>
+							<div class="ub-img arrr-img"></div>
+						</div>
+						
+						<div class="uinn" id="sl3">
+							<input type="checkbox" class="uhide" id="che3">
+							<div class="ui-slider" ontouchstart="zy_touch('')" onclick="setTouchID('che3');">
+								<div class="ui-slider-check"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="umar-t">
+					<div class="ub c-wh ub-ac ub-pc">
+						<div class="uinn b-gra22 ub ub-ac ub-f1">
+							<div class="ub-f1 uinn">图形解锁<span id="st4"></span></div>
+							<div class="ub-img arrr-img"></div>
+						</div>
+						
+						<div class="uinn" id="sl4">
+							<input type="checkbox" class="uhide" id="che4">
+							<div class="ui-slider" ontouchstart="zy_touch('')" onclick="patternLock('che4')">
+								<div class="ui-slider-check"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </body>
+<script>
+zy_init();
+window.uexOnload = function(type){
+	if (!type) {
+        //zy_con("content", 'webpage_content.html', 0, $$("header").offsetHeight);
+    }
+	window.onorientationchange=window.onresize=function(){
+		zy_resize("page_0",0,0);				
+	}
+	initTabNum();
+	
+	for(var i=0; i<5; i++){
+		var s = getstorage('MU3-settingNTK-che'+i);
+		//logs('[settings] ---->'+s);
+		var bl = (s=='false')?false:true;
+		if(s) changeStatus(1, bl, 'che'+i);
+	}
+	
+	//uexWidget.onResume = onResume;
+	uexLockPatternDH.cbLoginSuccess = function(opCode,dataType,data){
+		//0:表示登陆成功, 1:表示修改密码成功, 2:表示手势密码初始化成功
+		logs('cbLoginSuccess() data-->'+data);
+		onLockPatternDH = 0;
+		uexLockPatternDH.close();
+		setstorage('MU3-settingNTK-che4', 'true');
+	}
+	uexLockPatternDH.cbForgetPassword = function(opCode,dataType,data){
+		logs("[settings] cbForgetPassword() data-->"+data);
+		//login();
+		//zy_con("page_0", 'settings_content.html', 0, 0);
+		//setLockPatternDH();
+    }
+	uexLockPatternDH.cbLoginFail = function(opCode,dataType,data){
+    	 logs("cbLoginFail() data-->"+data);
+		 if(loginFailMax == data){
+		 	//todo...
+			//login();
+			//zy_con("page_0", 'settings_content.html', 0, 0);
+		 }
+    }
+	
+	uexWindow.cbOpenMultiPopover = function(opId,dataType,data){
+		logs("[settings] cbOpenMultiPopover() data-->"+data);
+	}
+	
+	//判断应用是否支持指纹识别，仅支持iOS8以上，5s以上设备
+	uexTouchID.cbSupportTouchID = function(isSupported){
+		//alert(isSupported);
+		if(isSupported == 0) zy_anim_push('touchid', 'uhide');
+	}
+	uexTouchID.supportTouchID();
+}
+
+function closeWind(){
+	var n = $$('tabs').innerHTML;
+	if(n!=tabNumO){
+		uexWindow.publishChannelNotification(CID_resetTabNum, n);
+	}
+	setstorage('MU3-WindowName', '');
+	uexWindow.close(-1);
+}
+
+function networkSetting(){
+	appCanWindowOpen('settingNetwork','0','settingNetwork.html', '10', '','', '4');
+}
+
+function changeStatusShake(f, s){
+	try {
+		var ch = $$('che');
+		if(ch) ch.checked = !ch.checked;
+		if(f) ch.checked = s;
+		
+		var str = ch.checked ? '开' : '关';
+		//setHtml('status', str);
+		
+		var ss = ch.checked ? 1 : 0;
+		var func = ch.checked ? 'addUexShake' : 'closeUexShake';
+		setstorage('MU3-Shake', ss);
+		uescript('root', func + '();');
+	}
+	catch(e){
+		logs(e);
+	}
+}
+
+function iOnblur(){
+	var n = $$('tabs').innerHTML;
+	if(n<tabNumMin){
+		alert('不能少于'+tabNumMin+'个');
+		$$('tabs').innerHTML = tabNumMin;
+	}
+}
+
+function initTabNum(){
+	var ele = $$('tabs');
+	var n = getstorage('MU3-shortCutNum');
+	n = n?int(n):10;
+	ele.innerHTML = n;
+	tabNumO = n;
+}
+function resetTabNum(i){
+	var ele = $$('tabs');
+	var n = int(ele.innerHTML);
+	if(i && n<tabNumMax) n++;
+	else if(n>tabNumMin) n--;
+	ele.innerHTML = n;
+	setstorage('MU3-shortCutNum', n);
+	//uexWindow.publishChannelNotification(CID_resetTabNum, n);
+}
+
+function changeStatus(f, s, id){
+	logs('[settings] changeStatus()---->'+f+'|'+s+'|'+id);
+	var ch = $$(id);
+	if(ch) ch.checked = !ch.checked;
+	if(f) ch.checked = s;
+	
+	var str = ch.checked?'开':'关';
+	//setHtml('status', str);
+	logs('[settings] changeStatus()---->'+ch.checked);
+	
+	setstorage('MU3-settingNTK-'+id, ch.checked);
+	
+	if ('che2' == id) {
+		var state = ch.checked ? 1 : 0;
+		uexWidget.setPushState(state);
+	}
+	else if ('che3' == id) {
+		if (ch.checked && !f) {
+			//setUexTouchID();
+		}
+	}
+	else if ('che4' == id) {
+		if (ch.checked && !f) {
+			setLockPatternDH();  //设置手势密码
+		}
+	}
+}
+
+//设置指纹登录
+function setTouchID(id){
+	var ch = $$(id).checked;
+	var userid = getstorage('MU30-US');
+	var cont = ch?'解除账号绑定?':('是否将“'+userid+'”账号与指纹绑定？');
+	uexWindow.cbConfirm = function(opId, dataType, data){
+		if(data==0){
+			if(ch) changeStatus('','',id);
+			else setUexTouchID(id);
+		}
+	}
+	uexWindow.confirm('提示', cont, ['确定','取消']);
+}
+
+function setUexTouchID(id){
+	var domain = getstorage('MU30-domainName');
+	var userid = getstorage('MU30-US');
+	var passwd = getstorage('MU30-PA');
+	setstorage('MU3-onSuspendNo', '1');
+	uexTouchID.clearSettings();
+	uexTouchID.setPassword(userid, passwd, domain);
+	uexTouchID.open('将手指放在home键处输入指纹', '', domain);
+	uexTouchID.cbOpen = function(s, a, p, d){
+		//s:打开状态 1 是打开成功 0 打开失败 2 touchID 不能使用
+		logs('cbOpen status-->' + s + '|' + a + '|' + p + '|' + d);
+		var txt = '指纹登录设置成功';
+		if (s != 1) {
+			//changeStatus(1, false, id);
+			//alert('取消指纹登录');
+			txt = '取消指纹登录';
+		}
+		else changeStatus(1, true, id);
+		uexWindow.toast('0', '5', txt, '1500');
+	}
+	uexTouchID.cbSetPassword = function(s){
+		logs('cbSetPassword status-->'+s);
+	}
+	uexTouchID.cbClearSettings = function(s){
+		logs('cbClearSettings status-->'+s);
+	}
+}
+
+//设置图形解锁
+function patternLock(id){
+	var ch = $$(id).checked;
+	if(ch){
+		uexWindow.cbConfirm = function(opId, dataType, data){
+			if(data==0) changeStatus('','',id);
+		}
+		uexWindow.confirm('提示', '真的不用我了吗？安全性要降低了哦', ['确定','取消']);
+	}
+	else changeStatus('','',id);
+}
+
+function setLockPatternDH(){
+	var s = window.getComputedStyle($$('page_0'),null);
+	var x = 0;
+	var y = 0;
+	var width = int(s.width);
+	var height = int(s.height);
+	
+	if(isAndroid){
+		var z = screen.width/width;
+		y = int(y*z);
+		width = int(width*z);
+		height = int(height*z);
+	}
+	
+	uexLockPatternDH.init('3',loginFailMax,x,y,width,height);
+	logs('uexLockPatternDH.init() -->'+x+'|'+y+'|'+width+'|'+height);
+	setstorage('MU3-settingNTK-che4', '');
+}
+
+function onResume(){
+	logs('[settings] onResume() -->'+onLockPatternDH);
+	if(onLockPatternDH) return;
+	
+	var s = window.getComputedStyle($$('page_0'),null);
+	var x = 0;
+	var y = 0;
+	var width = int(s.width);
+	var height = int(s.height);
+	
+	if(isAndroid){
+		var z = screen.width/width;
+		y = int(y*z);
+		width = int(width*z);
+		height = int(height*z);
+	}
+	
+	uexLockPatternDH.lock(x,y,width,height);
+	logs('uexLockPatternDH.lock() -->'+x+'|'+y+'|'+width+'|'+height);
+	onLockPatternDH = 1;
+}
+
+function login(){
+	alert('login()');
+}
+
+
+var tabNumMin=5, tabNumMax=30, tabNumO=0;
+var shake = getstorage('MU3-Shake');
+if(shake=='0') changeStatusShake(1, false);
+if(isAndroid) zy_anim_push('touchid', 'uhide');
+
+var loginFailMax = 5;
+var onLockPatternDH = 0;
+
+var mySlide = new zyEvent('sl',null,function(e, dx, dy, t){
+	logs('mySlide t----->'+t);
+	if(t=='left' && shake=='1') changeStatusShake(1, false);
+	else if(t=='right' && shake=='0') changeStatusShake(1, true);
+},'1',null);
+
+</script>
+</html>
